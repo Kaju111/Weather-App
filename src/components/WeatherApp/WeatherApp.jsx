@@ -14,9 +14,11 @@ const WeatherApp = () => {
   let api_key = "d3dc14d60aae5e53f340d98974645716";
 
   const [wicon, setWicon] = useState(cloud_icon);
+  
 
   const search = async () => {
     const element = document.getElementsByClassName("cityInput");
+
 
     if (element[0].value === "") {
       return 0;
@@ -37,31 +39,31 @@ const WeatherApp = () => {
     temprature[0].innerHTML = Math.floor(data.main.temp) + "°c";
     location[0].innerHTML = data.name;
   
-    if(data.Weather[0].icon==="01d" || data.Weather[0].icon==="01n")
+    if(data.weather[0].icon==="01d" || data.weather[0].icon==="01n")
     {
       setWicon(clear_icon)
     }
-    else if(data.Weather[0].icon==="02d" || data.Weather[0].icon==="02n")
+    else if(data.weather[0].icon==="02d" || data.weather[0].icon==="02n")
     {
       setWicon(cloud_icon)
     }
-    else if(data.Weather[0].icon==="03d" || data.Weather[0].icon==="03n")
+    else if(data.weather[0].icon==="03d" || data.weather[0].icon==="03n")
     {
       setWicon(drizzle_icon)
     }
-    else if(data.Weather[0].icon==="04d" || data.Weather[0].icon==="04n")
+    else if(data.weather[0].icon==="04d" || data.weather[0].icon==="04n")
     {
       setWicon(drizzle_icon)
     }
-    else if(data.Weather[0].icon==="09d" || data.Weather[0].icon==="09n")
+    else if(data.weather[0].icon==="09d" || data.weather[0].icon==="09n")
     {
       setWicon(rain_icon)
     }
-    else if(data.Weather[0].icon==="10d" || data.Weather[0].icon==="10n")
+    else if(data.weather[0].icon==="10d" || data.weather[0].icon==="10n")
     {
       setWicon(rain_icon)
     }
-    else if(data.Weather[0].icon==="13d" || data.Weather[0].icon==="13n")
+    else if(data.weather[0].icon==="13d" || data.weather[0].icon==="13n")
     {
       setWicon(snow_icon)
     }
@@ -71,9 +73,13 @@ const WeatherApp = () => {
   };
 
   return (
+    <div className="Main-Con">
     <div className="container">
       <div className="top-bar">
-        <input type="text" className="cityInput" placeholder="Search" />
+        <input type="text" 
+        className="cityInput" 
+        placeholder="Search" 
+        />
         <div
           className="search-icon"
           onClick={() => {
@@ -86,13 +92,13 @@ const WeatherApp = () => {
       <div className="weather-img">
         <img src={cloud_icon} alt="" className="cloud-img" />
       </div>
-      <div className="weather-temp">24°c</div>
-      <div className="weather-location">London</div>
+      <div className="weather-temp">0°c</div>
+      <div className="weather-location">Location</div>
       <div className="data-container">
         <div className="element">
           <img src={humiditly_icon} alt="" className="icon" />
           <div className="data">
-            <div className="humidity-percent">64%</div>
+            <div className="humidity-percent">0%</div>
             <div className="text">Humidity</div>
           </div>
         </div>
@@ -100,11 +106,12 @@ const WeatherApp = () => {
         <div className="element">
           <img src={wind_icon} alt="" className="icon" />
           <div className="data">
-            <div className="wind-rate">18 km/h</div>
+            <div className="wind-rate">0 km/h</div>
             <div className="text">Wind Speed</div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
